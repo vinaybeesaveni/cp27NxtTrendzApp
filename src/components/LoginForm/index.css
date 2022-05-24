@@ -108,3 +108,8 @@ input {
   text-align: center;
   font-size: 18px;
 }
+.error-msg {
+  color: red;
+  margin-top: 3px;
+  font-size: 14px;
+}

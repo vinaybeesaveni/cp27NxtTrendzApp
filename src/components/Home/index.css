@@ -13,11 +13,22 @@
     padding-top: 3%;
   }
 }
+
 .home-details-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   max-width: 300px;
 }
+@media screen and (min-width: 768px) {
+  .home-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 300px;
+  }
+}
+
 @media screen and (min-width: 992px) {
   .home-details-container {
     max-width: 500px;

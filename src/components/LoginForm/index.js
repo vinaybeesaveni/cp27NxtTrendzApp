@@ -2,7 +2,16 @@ import {Component} from 'react'
 import './index.css'
 
 class LoginForm extends Component {
-  state = {username: '', password: ''}
+  state = {username: '', password: '', showSubmitError: false, errorMsg: ''}
+
+  onSubmitSuccess = () => {
+    const {history} = this.props
+    history.replace('/')
+  }
+
+  onSubmitFailure = errorMsg => {
+    this.setState({showSubmitError: true, errorMsg})
+  }
 
   onSubmitForm = async event => {
     event.preventDefault()
@@ -14,10 +23,12 @@ class LoginForm extends Component {
       body: JSON.stringify(userDetails),
     }
     const response = await fetch(url, options)
-    const data = response.json()
-    // if(response.ok === true){
-    //     onSubmitSuccess()
-    // }
+    const data = await response.json()
+    if (response.ok === true) {
+      this.onSubmitSuccess()
+    } else {
+      this.onSubmitFailure(data.error_msg)
+    }
   }
 
   onPasswordChange = event => {
@@ -29,6 +40,7 @@ class LoginForm extends Component {
   }
 
   render() {
+    const {showSubmitError, errorMsg} = this.state
     return (
       <div className="login-container">
         <img
@@ -62,10 +74,11 @@ class LoginForm extends Component {
             <br />
             <input
               id="password"
-              type="text"
+              type="password"
               placeholder="Password"
               onChange={this.onPasswordChange}
             />
+            {showSubmitError && <p className="error-msg">*{errorMsg}</p>}
           </div>
           <button type="submit" className="login-btn">
             Login
