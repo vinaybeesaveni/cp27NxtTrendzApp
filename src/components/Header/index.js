@@ -16,6 +16,16 @@ const Header = () => (
         />
       </button>
     </div>
+  <ul className="navbar-list-container-desktop">
+      <li className="home-btn-desktop">Home</li>
+      <li className="home-btn-desktop">Products</li>
+      <li className="home-btn-desktop">Cart</li>
+      <li>
+        <button type="button" className="logout-btn-desktop">
+          Logout
+        </button>
+      </li>
+    </ul>
     <ul className="navbar-list-container-mobile">
       <li>
         <img
@@ -39,16 +49,7 @@ const Header = () => (
         />
       </li>
     </ul>
-    <ul className="navbar-list-container-desktop">
-      <li className="home-btn-desktop">Home</li>
-      <li className="home-btn-desktop">Products</li>
-      <li className="home-btn-desktop">Cart</li>
-      <li>
-        <button type="button" className="logout-btn-desktop">
-          Logout
-        </button>
-      </li>
-    </ul>
+    
   </nav>
 )
 
